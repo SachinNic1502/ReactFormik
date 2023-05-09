@@ -10,6 +10,13 @@ function YoutubeChanel() {
     },
     onSubmit:values=>{
         console.warn(values);
+    },
+    validate:values=>{
+        let error={}
+if (!values.name) {
+    error.name="Required"
+}
+        return error;
     }
    })
 //    console.warn(formil.values);
@@ -18,7 +25,7 @@ function YoutubeChanel() {
         <form onSubmit={formil.handleSubmit}>
             <label htmlFor='Name'>Name</label>
             <input name='name' type='text' id='name' onChange={formil.handleChange} value={formil.values.name}/>
-            <label htmlFor='email'>Email</label>
+            <label  htmlFor='email'>Email</label>
             <input name='email' type='email' id='email' onChange={formil.handleChange} value={formil.values.email}/>
             
             <label htmlFor='channel'>Channel</label>
