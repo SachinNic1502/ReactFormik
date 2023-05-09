@@ -71,6 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 …or push an existing repository from the command line
 
-git remote add origin https://github.com/SachinNic1502/ReactFormik.git
-git branch -M main
-git push -u origin main
+### git remote add origin https://github.com/SachinNic1502/ReactFormik.git
+### git branch -M main
+### git push -u origin main
