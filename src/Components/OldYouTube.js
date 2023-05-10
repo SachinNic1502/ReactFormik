@@ -1,7 +1,7 @@
 import { useFormik } from 'formik'
 import React from 'react'
 import * as Yup from 'yup'
-function YoutubeChanel() {
+function OldYouTube() {
 
 
 const initialValues = {
@@ -29,7 +29,7 @@ const validate= values => {
     return error;
 }
 const validationSchema = Yup.object({
-    name:Yup.string().required('Required').min(6).max(10),
+    name:Yup.string().required('Required').min(6),
     email:Yup.string().email('Invalide Email Formate').required('Required'),
     channel:Yup.string().required('Required')
     
@@ -59,14 +59,16 @@ const validationSchema = Yup.object({
                     name='name' 
                     type='text' 
                     id='name' 
-                   {...formil.getFieldProps('name')}
+                    onChange={formil.handleChange} 
+                    onBlur={formil.handleBlur}
+                    value={formil.values.name} 
                 />
                 {formil.touched.name&&formil.errors.name?<p style={{color:'red'}}>{formil.errors.name}</p>:null}
                 <label htmlFor='email'>Email</label>
-                <input name='email' type='email' id='email' {...formil.getFieldProps('email')} />
+                <input name='email' type='email' id='email' onBlur={formil.handleBlur}  onChange={formil.handleChange} value={formil.values.email} />
                 {formil.touched.email &&formil.errors.email?<div style={{color:'red'}}>{formil.errors.email}</div>:null}
                 <label htmlFor='channel'>Channel</label>
-                <input name='channel' type='text' id='channel' {...formil.getFieldProps('channel')} />
+                <input name='channel' type='text' id='channel' onBlur={formil.handleBlur} onChange={formil.handleChange} value={formil.values.channel} />
                 {formil.touched.channel &&formil.errors.channel?<div style={{color:'red'}}>{formil.errors.channel}</div>:null}
                 <button type="submit">Submit</button>
 
@@ -75,4 +77,4 @@ const validationSchema = Yup.object({
     )
 }
 
-export default YoutubeChanel
+export default OldYouTube
