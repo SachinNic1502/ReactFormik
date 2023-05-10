@@ -26,6 +26,20 @@ input[type="email"]{
   margin-bottom: 20px;
   
 }
+textarea{
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.4857;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+
+}
 button{
   margin-top: 20px;
   display: block;
@@ -39,4 +53,7 @@ button{
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 20px;
+}
+.error{
+  color: red;
 }

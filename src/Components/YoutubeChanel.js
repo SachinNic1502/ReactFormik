@@ -1,77 +1,86 @@
-import { useFormik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import React from 'react'
 import * as Yup from 'yup'
 function YoutubeChanel() {
 
 
-const initialValues = {
-    name: '',
-    email: '',
-    channel: ''
-}
-const onSubmit = values => {
-    console.warn(values);
-}
-const validate= values => {
-    let error = {}
-    if (!values.name) {
-        error.name = "Required"
+    const initialValues = {
+        name: 'Sachin',
+        email: '',
+        channel: '',
+        comments: '',
+        social: {
+            fb: '',
+            tw: ''
+        },
+        number:['','']
     }
-    if(!values.email){
-        error.email= "Required"
-    }else if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i.test(values.email)){
-        error.email= "Invalide Email Formate"
+    const onSubmit = values => {
+        console.warn(values);
     }
-    if(!values.channel){
-        error.channel= "Required"
-    }
-    
-    return error;
-}
-const validationSchema = Yup.object({
-    name:Yup.string().required('Required').min(6).max(10),
-    email:Yup.string().email('Invalide Email Formate').required('Required'),
-    channel:Yup.string().required('Required')
-    
-})
-// Formik Validation
-// const validationSchema = Yup.object({
-//     name: Yup.string().required('Required'),
-//     email: Yup.string()
-//       .email('Invalid email format')
-//       .required('Required'),
-//     channel: Yup.string().required('Required')
-//   })
+    const validate = values => {
+        let error = {}
+        if (!values.name) {
+            error.name = "Required"
+        }
+        if (!values.email) {
+            error.email = "Required"
+        } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i.test(values.email)) {
+            error.email = "Invalide Email Formate"
+        }
+        if (!values.channel) {
+            error.channel = "Required"
+        }
 
-    const formil = useFormik({
-        initialValues,
-        onSubmit ,
-        validationSchema
-        // validate
-        
+        return error;
+    }
+    const validationSchema = Yup.object({
+        name: Yup.string().required('Required').min(6).max(10),
+        email: Yup.string().email('Invalide Email Formate').required('Required'),
+        channel: Yup.string().required('Required'),
+        comments: Yup.string().required('Required')
+
     })
-       console.log();
+    console.log();
     return (
-        <div>
-            <form onSubmit={formil.handleSubmit}>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+        >
+            <Form >
                 <label htmlFor='Name'>Name</label>
-                <input 
-                    name='name' 
-                    type='text' 
-                    id='name' 
-                   {...formil.getFieldProps('name')}
-                />
-                {formil.touched.name&&formil.errors.name?<p style={{color:'red'}}>{formil.errors.name}</p>:null}
+                <Field name='name' type='text' id='name' />
+                <p className='error'><ErrorMessage name='name' /></p>
                 <label htmlFor='email'>Email</label>
-                <input name='email' type='email' id='email' {...formil.getFieldProps('email')} />
-                {formil.touched.email &&formil.errors.email?<div style={{color:'red'}}>{formil.errors.email}</div>:null}
+                <Field name='email' type='email' id='email' />
+                <p className='error'><ErrorMessage className='error' name='email' /></p>
                 <label htmlFor='channel'>Channel</label>
-                <input name='channel' type='text' id='channel' {...formil.getFieldProps('channel')} />
-                {formil.touched.channel &&formil.errors.channel?<div style={{color:'red'}}>{formil.errors.channel}</div>:null}
+                <Field name='channel' type='text' id='channel' />
+                <p className='error'> <ErrorMessage name='channel' /></p>
+                <label htmlFor='comments'>Comments</label>
+                <Field name='comments' as="textarea" id='comments' />
+                <p className='error'> <ErrorMessage name='comments' /></p>
+                <label htmlFor='fb'>Facebook</label>
+
+                <Field name='social.fb' type="text" id='fb' />
+                <p className='error'> <ErrorMessage name='comments' /></p>
+                <label htmlFor='tw'>Tweeter</label>
+                <Field name='social.tw' type="text" id='tw' />
+                <p className='error'> <ErrorMessage name='comments' /></p>
+
+                <label htmlFor='fb'>First Number</label>
+
+                <Field name='number[0]' type="text" id='no1' />
+                <p className='error'> <ErrorMessage name='comments' /></p>
+                <label htmlFor='tw'>Second Number</label>
+                <Field name='number[1]' type="text" id='no2' />
+                <p className='error'> <ErrorMessage name='comments' /></p>
+
                 <button type="submit">Submit</button>
 
-            </form>
-        </div>
+            </Form>
+        </Formik>
     )
 }
 
