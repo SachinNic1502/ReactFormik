@@ -8,6 +8,7 @@ label{
   font-weight: bold;
   display: flex;
   margin-bottom: 5px;
+  margin-top: 20px;
 
 }
 input[type="text"],
@@ -23,8 +24,10 @@ input[type="email"]{
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 20px;
+  
 }
 button{
+  margin-top: 20px;
   display: block;
   width: 423px;
   padding: 6px 12px;

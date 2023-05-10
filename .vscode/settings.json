@@ -1,0 +1,13 @@
+{
+  "github.branchProtection": true,
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.allowNoVerifyCommit": true,
+  "git.allowForcePush": true,
+  "git.alwaysSignOff": true,
+  "git.branchRandomName.enable": true,
+  "git.enableCommitSigning": true,
+  "git.enableSmartCommit": true,
+  "git.fetchOnPull": true,
+  "git.verboseCommit": true,
+  "git.terminalGitEditor": true
+  }
